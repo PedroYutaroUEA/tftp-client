@@ -1,5 +1,4 @@
-from src.core.domain import TFTPEngine
-from src.utils import FileSystemHandler, AppConfig
+from src.utils import FileSystemHandler
 from src.interfaces import ITFTPService
 
 
@@ -8,7 +7,7 @@ class TFTPService(ITFTPService):
     Classe Wrapper do cliente TFTP - Abstrai Operações
     """
 
-    def __init__(self, engine: TFTPEngine, config: AppConfig):
+    def __init__(self, engine, config):
         self.engine = engine
         self.config = config
         self.fs = FileSystemHandler()
