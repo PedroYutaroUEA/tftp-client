@@ -12,6 +12,11 @@ class FileSystemHandler:
             return []
         return os.listdir(path)
 
+    def delete_file(self, directory, filename):
+        path = os.path.join(directory, filename)
+        if os.path.exists(path):
+            os.remove(path)
+
     @staticmethod
     def file_exists(directory, filename: str):
         return os.path.exists(os.path.join(directory, filename))

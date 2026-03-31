@@ -9,6 +9,38 @@ class TFTPEngine:
         self.conn = connection
         self.block_size = block_size
 
+    async def list_remote_files(self, path):
+        """Envia requisição de listagem e retorna string com nomes dos arquivos"""
+        self.conn.open()
+        pkt = TFTPPacket.pack_list_request(path)
+        await self.conn.send(pkt)
+
+        content = b""
+        expected_block = 1
+
+        try:
+            while True:
+                # Esperamos um pacote DATA ou ERROR
+                data, addr = await self.conn.receive(self.block_size + 4)
+                res = TFTPPacket.parse(data)
+
+                if res["opcode"] == TFTPPacket.DATA:
+                    block_num = struct.unpack("!H", data[2:4])[0]
+                    if block_num == expected_block:
+                        content += data[4:]
+                        # Envia ACK para o servidor saber que recebemos a parte da lista
+                        ack = TFTPPacket.pack_ack(block_num)
+                        await self.conn.send(ack, addr)
+                        expected_block += 1
+
+                        if len(data[4:]) < self.block_size:
+                            break
+                elif res["opcode"] == TFTPPacket.ERROR:
+                    raise Exception(f"Servidor recusou listagem: {data[4:-1].decode()}")
+            return content.decode("utf-8")
+        except Exception as e:
+            raise Exception(f"Erro na listagem remota: {e}")
+
     async def read_file(self, filename, write_callback):
         """Lógica RRQ"""
         self.conn.open()

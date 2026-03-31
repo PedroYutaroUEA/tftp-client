@@ -16,8 +16,8 @@ class OPTIONS(Enum):
     """
 
     LIST_LOCAL = "Listar Arquivos (Locais)"
-    DOWNLOAD = "Baixar Arquivo (GET)"
-    UPLOAD = "Enviar Arquivo (PUT)"
+    DOWNLOAD = "Baixar Arquivo (RRQ)"
+    UPLOAD = "Enviar Arquivo (WRQ)"
     SETTINGS = "Configurações do Sistema"
     EXIT = "Sair"
 

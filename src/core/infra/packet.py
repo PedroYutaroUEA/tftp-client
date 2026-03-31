@@ -11,6 +11,12 @@ class TFTPPacket:
     DATA = 3
     ACK = 4
     ERROR = 5
+    LIST = 6
+
+    @staticmethod
+    def pack_list_request(path: str) -> bytes:
+        """Monta um pacote de solicitação de listagem: [06][caminho][0]"""
+        return struct.pack(f"!H{len(path)}sb", TFTPPacket.LIST, path.encode(), 0)
 
     @staticmethod
     def pack_rrq(filename: str, mode: str = "octet") -> bytes:
