@@ -4,10 +4,9 @@ Um cliente TFTP (Trivial File Transfer Protocol) leve e assíncrono, implementad
 # Estrutura do projeto
 ```
 .
-├── main.py                   # Utiliza o cliente para acessar o servidor
+├── main.py                   # Inicia o cliente
 │
-├── protocol/
-│   ├── packet.py             # Construtor e parser de pacotes TFTP
+├── src/                      # Pasta com os modulos do cliente
 │
 ├── downloads/                # Pasta de recebimento de arquivos
 │
