@@ -1,11 +1,11 @@
 import struct
-from src.core.infra import AsyncUDPConnection, TFTPPacket
+from src.core.infra import TFTPPacket
 
 
 class TFTPEngine:
     """Implementação manual do protocolo TFTP (Core). Usando Injeção de Conexão."""
 
-    def __init__(self, connection: AsyncUDPConnection, block_size=512):
+    def __init__(self, connection, block_size=512):
         self.conn = connection
         self.block_size = block_size
 

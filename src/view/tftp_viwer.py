@@ -35,11 +35,13 @@ class TFTPViewer(ITFTPViwer):
         # 1. Configuração inicial (Provider)
         self.config = AppConfig()
         # 2. Infraestrutura
-        self.conn = AsyncUDPConnection(self.config.host, self.config.port)
+        self.conn = AsyncUDPConnection(self.config.host, self.config.port, timeout=10)
         # 3. Core do Protocolo (Engine manual RFC 1350)
-        self.engine = TFTPEngine(self.conn, block_size=self.config.block_size)
+        self.engine = TFTPEngine(
+            connection=self.conn, block_size=self.config.block_size
+        )
         # 4. Camada de Aplicação (Service)
-        self.service = TFTPService(self.engine, self.config)
+        self.service = TFTPService(engine=self.engine, config=self.config)
 
     def display_status(self):
         """Exibe um 'dashboard' rápido das configurações atuais."""
