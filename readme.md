@@ -61,3 +61,53 @@ O ip padrão para conectar a um servidor é "127.0.0.1:6969"
 ? Selecione uma operação: Enviar Arquivo (PUT)
 ? Nome do arquivo na pasta de upload: upload.txt                                # Nome do arquivo na pasta especificada para fazer upload no servidor
 ```
+
+# Testes
+
+
+## Com SolarWind
+### 1º passo: configurar ip do server
+
+Ips disponíveis do server
+
+![Ips do server](./readme_images/server_ips.jpeg)
+
+Entrar na configuração do sistema
+
+![config_sistema](./readme_images/1_passo-config_sistema.png)
+
+Alterar o ip para o ip do server
+
+![modifica_ip](./readme_images/2_passo-modificar_ip.png)
+
+
+### 2º passo: fazer download
+Arquivo do servidor
+
+![server_file](./readme_images/3_passo-arquivo_servidor.png)
+
+Fazer o download
+
+![download](./readme_images/3_passo-baixar_arquivo.png)
+
+Escrever o nome do arquivo
+
+![file_name](./readme_images/3_passo-nome_arquivo.png)
+
+Pronto
+
+![done](./readme_images/3_passo-conclusão.png)
+
+
+### 3º passo: fazer upload
+Para fazer o upload:
+
+![upload](./readme_images/4_passo-upload.png)
+
+Arquivo presente no cliente
+
+![client_file](./readme_images/4_passo-upload2.png)
+
+Arquivo no servidor
+
+![client_file_in_server](./readme_images/4_passo-upload3.png)
