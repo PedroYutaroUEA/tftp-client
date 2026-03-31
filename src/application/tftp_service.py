@@ -38,6 +38,7 @@ class TFTPService(ITFTPService):
                 f"Download concluído com sucesso em {self.config.download_path}",
             )
         except Exception as e:
+            self.fs.delete_file(self.config.download_path, filename)
             return False, f"Falha no download: {e}"
 
     async def upload(self, filename: str) -> tuple[bool, str]:
@@ -52,3 +53,16 @@ class TFTPService(ITFTPService):
             return True, "Upload concluído com sucesso."
         except Exception as e:
             return False, f"Falha no upload: {e}"
+
+    async def list_remote(self, remote_path: str) -> tuple[bool, str]:
+        """
+        List remote files for a given path
+        """
+        print(f"[LOG] Solicitando listagem remota para: {remote_path}")
+        try:
+            files_str = await self.engine.list_remote_files(remote_path)
+            if not files_str.strip():
+                return True, "(Diretório remoto vazio)"
+            return True, files_str
+        except Exception as e:
+            return False, str(e)
