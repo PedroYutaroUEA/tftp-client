@@ -1,9 +1,8 @@
-<img width="931" height="893" alt="image" src="https://github.com/user-attachments/assets/5dfc6878-5d13-4d37-b9d0-5b6a22e55366" /># Cliente TFTP
+# Cliente TFTP
 Um cliente TFTP (Trivial File Transfer Protocol) leve e assíncrono, implementado em Python com asyncio. Suporta operações de download e upload de arquivos.
 
 # Diagrama de Componentes (TFTP Client)
 <img width="931" height="893" alt="image" src="https://github.com/user-attachments/assets/63cd3ced-d3c0-4093-beac-ec738e092fb7" />
-
 
 # Estrutura do projeto
 ```
